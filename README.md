@@ -1,4 +1,4 @@
-# Kubernetes Example Voting App — DevOps Project
+# Kubernetes Voting App
 
 This project is a full **microservices-based voting application** deployed on **Kubernetes (Minikube)**.
 
@@ -25,25 +25,30 @@ The application consists of **5 main microservices**:
 ## Project Structure
 
 ```
-- **k8s/**
-  - **namespace.yaml** → defines the namespace for the app  
-  - **configmap.yaml** → contains configuration values  
-  - **secrets.yaml** → stores sensitive data (like DB credentials)  
-  - **db/**
-    - **db-pvc.yaml** → persistent storage for PostgreSQL  
-    - **db-deployment.yaml**  
-    - **db-service.yaml** 
-  - **redis/**
-    - **redis-deployment.yaml** 
-    - **redis-service.yaml** 
-  - **vote/**
-    - **vote-deployment.yaml** → frontend for voting  
-    - **vote-service.yaml** 
-  - **worker/**
-    - **worker-deployment.yaml** → background worker for processing votes  
-  - **result/**
-    - **result-deployment.yaml** → frontend showing voting results  
-    - **result-service.yaml** 
+k8s/
+  namespace.yaml       # defines the namespace for the app
+  configmap.yaml       # contains configuration values
+  secrets.yaml         # stores sensitive data (like DB credentials)
+  
+  db/
+    db-pvc.yaml        # persistent storage for PostgreSQL
+    db-deployment.yaml
+    db-service.yaml
+
+  redis/
+    redis-deployment.yaml
+    redis-service.yaml
+
+  vote/
+    vote-deployment.yaml   # frontend for voting
+    vote-service.yaml
+
+  worker/
+    worker-deployment.yaml  # background worker for processing votes
+
+  result/
+    result-deployment.yaml  # frontend showing voting results
+    result-service.yaml
 
 ```
 
@@ -114,9 +119,9 @@ Open: [http://localhost:5000](http://localhost:5000)
 
 **Result frontend:**
 ```bash
-kubectl port-forward svc/result 5001:80 -n voting-app
+kubectl port-forward svc/result 5002:80 -n voting-app
 ```
-Open: [http://localhost:5001](http://localhost:5001)
+Open: [http://localhost:5002](http://localhost:5002)
 
 ---
 
